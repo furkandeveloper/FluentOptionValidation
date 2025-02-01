@@ -20,7 +20,7 @@ public static class OptionsBuilderExtensions
     /// <returns>
     /// The <see cref="OptionsBuilder{TOptions}" />.
     /// </returns>
-    public static OptionsBuilder<TOptions> Validate<TOptions>(this OptionsBuilder<TOptions> builder)
+    public static OptionsBuilder<TOptions> ValidateOptionSharp<TOptions>(this OptionsBuilder<TOptions> builder)
         where TOptions : class
     {
         builder.Services.AddSingleton<IValidateOptions<TOptions>>(
