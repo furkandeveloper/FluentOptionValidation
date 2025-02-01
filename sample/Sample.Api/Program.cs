@@ -1,8 +1,19 @@
+using FluentValidation;
+using OptionValidationSharp;
+using Sample.Api;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
+builder.Services.AddOptions<AppSettings>()
+    .Bind(builder.Configuration.GetSection("AppSettings"))
+    .ValidateOptionSharp()
+    .ValidateOnStart();
 
 var app = builder.Build();
 
